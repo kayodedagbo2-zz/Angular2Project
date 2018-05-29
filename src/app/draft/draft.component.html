@@ -1,0 +1,38 @@
+<h2> DRAFT LIST </h2>
+<div>
+  Edit and select a team for each player. <br />
+  Once on a team they will be removed from the list <br />
+  Once ALL the players have been placed on a team <br />
+  You will be able to view the Rosters <br />
+</div>
+<div>
+  <a routerLink="/roster" *ngIf="filterWithTeams(players).length == 0">CLICK HERE TO SEE THE ROSTERS</a>
+  <table cellspacing = "2" border="1" cellpadding="4" *ngIf="filterWithTeams(players).length > 0">
+    <tr>
+        <td width="20%"><b>Name</b></td>
+        <td width="20%"><b>College</b></td>
+        <td width="20%"><b>Height</b></td>
+        <td width="20%"><b>Weight</b></td>
+        <td width="20%" class="teamcolumn"><b>TEAM</b></td>
+        <td width="20%"></td>
+    </tr>
+    <tr *ngFor="let player of filterWithTeams(players)" [ngClass] = "{'editing': player.editing}">      
+      <td><span class="show">{{player.name}}</span><span class="edit"> <input [(ngModel)]="player.name" placeholder="name"></span></td>     
+      <td><span class="show">{{player.college}}</span><span  class="edit"><input [(ngModel)]="player.college" placeholder="college"></span></td>      
+      <td><span class="show">{{player.height}}</span><span  class="edit"><input [(ngModel)]="player.height" placeholder="height"></span></td>     
+      <td><span class="show">{{player.weight}}</span><span  class="edit"><input [(ngModel)]="player.weight" placeholder="weight"></span></td>
+      <td>
+          <span class="show">{{player.team ? player.team : "NO TEAM ASSIGNED"}}</span>
+          <span  class="edit">
+            <select [(ngModel)]="player.team">
+              <option value="null">-Select a team-</option>
+              <option *ngFor="let team of teams" value="{{team.name}}" [selected] = "player.team == team.name">
+                {{team.name}}
+              </option>
+            </select>
+        </span>
+      </td>
+      <td><button (click)="onEdit(player)"><span class="edit">SAVE</span><span class="show">EDIT</span> PLAYER</button></td>
+    </tr>
+  </table>
+</div>

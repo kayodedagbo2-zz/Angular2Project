@@ -1,0 +1,19 @@
+<h2> Roster LIST </h2>
+<div>
+   <table cellspacing = "2" border="1" cellpadding="4">
+    <tr>
+        <td width="20%"><b>Name</b></td>
+        <td width="20%"><b>College</b></td>
+        <td width="20%"><b>Height</b></td>
+        <td width="20%"><b>Weight</b></td>
+        <td width="20%" class="teamcolumn"><b>TEAM</b></td>      
+    </tr>
+    <tr *ngFor="let player of players" >      
+      <td><span >{{player.name}}</span></td>     
+      <td><span >{{player.college}}</span></td>      
+      <td><span >{{player.height}}</span></td>     
+      <td><span >{{player.weight}}</span></td>
+      <td><span >{{player.team}}</span></td>
+     </tr>
+  </table>
+</div>

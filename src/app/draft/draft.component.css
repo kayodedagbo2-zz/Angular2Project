@@ -1,0 +1,19 @@
+table tr:hover{
+    background-color: yellow
+}
+
+.teamcolumn{
+    background-color: cadetblue;
+}
+
+table tr td span.edit{
+    display:none;
+} 
+
+table tr.editing td span.edit{
+    display:block;
+}
+
+table tr.editing td span.show{
+    display:none;
+}
